@@ -34,12 +34,12 @@ def draw():
             pass
         elif letter == '[':
             item = [turtle.position(), turtle.heading()]
-            stack.append(info)
+            stack.append(item)
         elif letter == ']':
             item = stack.pop()
             turtle.up()
-            turtle.goto(info[0])
-            turtle.setheading(info[1])
+            turtle.goto(item[0])
+            turtle.setheading(item[1])
             turtle.down()
         elif letter == '+':
             turtle.left(lsystem_angle)
@@ -53,7 +53,7 @@ def draw():
 
 print('Welcome to the L-system image generation program!')
 print('\nPlease select from one of the following L-systems:')
-print('\n a) Dragon curve                 j) Plant A')
+print('\n a) Dragon curve                   j) Plant A')
 print(' b) Koch triangle (90 degree)      k) Plant B')
 print(' c) Koch triangle (75 degree)      l) Plant C')
 print(' d) Coloured square                m) Simple square')
@@ -100,7 +100,7 @@ elif choice == 'd':
     lsystem_colours = [ "black", "red", "green", "blue", "yellow" ]
     starting_position = (0, 0)
     starting_angle = 0
-elif choice == 'e'
+elif choice == 'e':
     lsystem_string = "X"
     lsystem_rules = [ ["X", "X0F"],
         ["0", "1"], ["1", "2"], ["2", "3"], ["3", "4"],
@@ -123,7 +123,7 @@ elif choice == 'f':
     lsystem_colours = []
     starting_position = (0, 0)
     starting_angle = 0
-elif choice == 'g'
+elif choice == 'g':
     lsystem_string = "A"
     lsystem_rules = [ ["A", "B-A-B"], ["B", "A+B+A"] ]
     lsystem_length = 20
@@ -251,6 +251,7 @@ for _ in range(lsystem_iterations):
 if display_method == '1':
     print(lsystem_string)
 else:
+    turtle.hideturtle()
     turtle.tracer(False)
     draw()
     turtle.update()
